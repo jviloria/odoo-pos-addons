@@ -25,7 +25,8 @@
 POS Tip Percent
 ==================================
 
-Module for tip percent.
+This module allows you to calculate the tip in 
+percentage of the total pos ticket.
     """,
     "depends":["point_of_sale",],
     "category":"Sale",
