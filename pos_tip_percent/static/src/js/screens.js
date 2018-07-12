@@ -14,13 +14,14 @@ odoo.define('pos_tip_percent.screens', function(require){
             var tip    = order.get_tip();
             var change = order.get_change();
             var value  = tip;
-            var total  = order.get_total_with_tax();
+            var total  = order.get_total_without_tax();
 
             if (tip === 0 && change > 0  ) {
                 value = change;
             }
             if (tip === 0 && change === 0  ) {
-                value = total * 0.10;
+                var tip_product = this.pos.db.get_product_by_id(this.pos.config.tip_product_id[0]);
+                value = total * (tip_product.price/100);
             }
 
             this.gui.show_popup('number',{
